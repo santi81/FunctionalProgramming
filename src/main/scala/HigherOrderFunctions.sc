@@ -65,9 +65,18 @@ def sumTailRec(f: Int => Int, a: Int ,b : Int) : Int = {
   @tailrec
   def loop(acc : Int,a: Int) : Int = {
     if (a > b) acc
+<<<<<<< HEAD
     else loop(f(a) + acc, a + 1)
   }
   loop(0 , a)
 }
 
 sumTailRec(x => x,1,8)
+=======
+    else loop(acc * a, a + 1)
+  }
+  loop(1 , a)
+}
+
+sumIntsV1(1,10)
+>>>>>>> 2825dd07f2cd4394eb949f4416f9973a37aeab31
