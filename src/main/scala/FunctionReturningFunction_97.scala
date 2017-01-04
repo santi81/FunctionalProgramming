@@ -38,4 +38,22 @@ object FunctionReturningFunction_97 extends App {
 
 
 
+  def newSaySomething(prefix:String)(s: String) : String = {
+
+    prefix + " " + s
+  }
+
+  //another way to define this would be
+
+  def anotherNewSaySomething(prefix : String): (String) => String = {
+
+    def addString(s : String) : String = {
+
+      prefix  + " " + s
+    }
+    addString
+  }
+
+ println(newSaySomething("Hello")("Santosh"))
+
 }
