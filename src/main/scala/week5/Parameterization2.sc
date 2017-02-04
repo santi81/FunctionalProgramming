@@ -1,6 +1,12 @@
 
 
-def mSort[T](xs: List[T])(comp:(T,T) => Boolean) : List[T] = {
+// Parameterization with Ordering///
+
+// scala.math.Ordering[T]
+
+import scala.math.Ordering
+
+def mSort[T](xs: List[T])(ord:Ordering[T]) : List[T] = {
 
   val n = xs.length/ 2
 
@@ -13,20 +19,17 @@ def mSort[T](xs: List[T])(comp:(T,T) => Boolean) : List[T] = {
       case (Nil,ys1) => ys1
       case (xs1,Nil) => xs1
       case (x :: xs1,y::ys1) =>
-        if (comp(x,y))  x :: merge(xs1,second) else y :: merge(first,ys1)
+        if (ord.lt(x,y))  x :: merge(xs1,second) else y :: merge(first,ys1)
 
     }
     val (first,second) = xs splitAt n
-    merge(mSort(first)(comp),mSort(second)(comp))
+    merge(mSort(first)(ord),mSort(second)(ord))
   }
 }
 
 
 val nums = List(2 , -4 ,5, 7, 1)
 
-mSort(nums)((x,y)=> x<y)
+mSort(nums)(Ordering.Int)
 
 
-// Parameterization with Ordering///
-
-// scala.math.Ordering[T]
