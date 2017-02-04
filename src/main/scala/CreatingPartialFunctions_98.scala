@@ -97,4 +97,5 @@ object CreatingPartialFunctions_98 extends App{
   }
 
 
+
 }
